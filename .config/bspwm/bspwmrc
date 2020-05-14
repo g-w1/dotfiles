@@ -35,5 +35,7 @@ bspc query -N -n .hidden >/dev/null || setsid $TERMINAL -n "$dropdownname" -e dr
 bspc rule -a St:$dropdownname hidden=on
 bspc rule -a St:$dropdownname sticky=on
 bspc rule -a St:$dropdownname state=floating
-
+bspc rule -a Screenkey manage=off
+bspc rule -a st state=fullscreen
+bspc rule -a "discord" desktop="focused:^7"
 bspc config external_rules_command "$(which floaters)"

@@ -86,13 +86,13 @@ super + {_,shift +} bracketright
 super + {_,shift +} bracketleft
 	mpc seek -{10,120}
 # Increase volume
-super + {equal,plus}
-	amixer sset Master {5,15}%+; pkill -RTMIN+10 blocks
+super + equal
+	pamixer --allow-boost -i 5
 # Decrease volume
-super {_,shift +} + minus
-	amixer sset Master {5,15}%-; pkill -RTMIN+10 blocks
-super + shift + m
-	amixer sset Master toggle; pkill -RTMIN+10 blocks
+super + minus
+	pamixer --allow-boost -d 5
+# super + shift + m
+# 	amixer sset Master toggle; pkill -RTMIN+10 blocks
 
 # Audiokeys
 XF86AudioMute
@@ -140,8 +140,8 @@ super + F1
 super + F3
 	displayselect
 # Hibernate
-super + F4
-	prompt 'Hibernate computer?' 'sudo -A zzz -Z'
+# super + F4
+# 	prompt 'Hibernate computer?' 'sudo -A zzz -Z'
 super + F5 is unbound.
 # Start torrent daemon/open interface
 super + F6

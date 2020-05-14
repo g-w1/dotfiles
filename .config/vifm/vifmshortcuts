@@ -50,3 +50,5 @@ map cfmc :e ${XDG_CONFIG_HOME:-$HOME/.config}/ncmpcpp/config<CR>
 map cfk :e ${XDG_CONFIG_HOME:-$HOME/.config}/sxhkd/sxhkdrc<CR>
 map cfi :e ${XDG_CONFIG_HOME:-$HOME/.config}/i3/config<CR>
 map cfb :e ${XDG_CONFIG_HOME:-$HOME/.config}/i3blocks/config<CR>
+map cfbs :e ${XDG_CONFIG_HOME:-$HOME/.config}/bspwm/bspwmrc<CR>
+map cfpb :e ${XDG_CONFIG_HOME:-$HOME/.config}/polybar/config<CR>
