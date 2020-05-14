@@ -18,7 +18,7 @@ fi
 
 # Start workspaces on the main monitor.
 bspc monitor VGA-1 -d 1 2 3 4 5
-bspc monitor LVDS-1 -d  6 7 8 9
+bspc monitor LVDS-1 -d  6 7 8 9 0
 # bspc desktop -f 1
 
 # If you want a multi-monitor display or something else, I leave that to you to

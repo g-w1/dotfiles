@@ -25,7 +25,7 @@ blue = ${xrdb:color12:#83a598}
 magenta = ${xrdb:color13:#d3869b}
 cyan = ${xrdb:color14:#8ec07c}
 white = ${xrdb:color15:#ebdbb2}
-background = ${xrdb:color256:#1d2021}
+background = ${xrdb:color256:#aa1d2021}
 foreground = ${xrdb:color257:#ebdbb2}
 
 [bar/top_external]
@@ -65,7 +65,7 @@ font-3 = Symbola:pixelsize=9;1
 ; Other modules: xkeyboard filesystem xbacklight backlight-acpi cpu memory temperature powermenu
 modules-left = bspwm xwindow
 ;modules-center =
-modules-right = mpd volume mutt-wizard wlan battery weather date
+modules-right = mpd volume mutt-wizard wlan date filesystem
 
 tray-position = right
 tray-padding = 0
@@ -110,10 +110,10 @@ font-2 = Noto Color Emoji:scale=10:style=Regular;2
 font-3 = Symbola:pixelsize=9;1
 
 
-; Other modules: xkeyboard filesystem xbacklight backlight-acpi cpu memory temperature powermenu weather
-modules-left = bspwm xwindow
+; Other modules: xkeyboard xbacklight backlight-acpi cpu temperature powermenu weather
+modules-left = bspwm xwindow powermenu
 ;modules-center =
-modules-right = mpd volume mutt-wizard wlan eth battery date
+modules-right = mpd volume mutt-wizard memory newssec wlan date filesystem
 
 tray-position = right
 tray-padding = 0
@@ -124,6 +124,12 @@ wm-restack = bspwm
 
 scroll-up = bspwm-desknext
 scroll-down = bspwm-deskprev
+[module/newssec]
+type = custom/script
+exec = news
+interval = 500
+format-underline = ${colors.black}
+click-left = $TERMINAL -e newsboat
 [module/pulseaudio]
 type = internal/pulseaudio
 
@@ -144,10 +150,10 @@ interval = 5
 type = custom/script
 exec = mailbox
 interval = 5
-format-prefix = "  "
-format-underline = ${colors.red}
-click-right = mailsync
-click-left = $TERMINAL -e neomutt
+; format-prefix = " "
+format-underline = ${colors.orange}
+; click-right = mailsync
+; click-left = $TERMINAL -e neomutt
 
 
 [module/weather]
@@ -161,7 +167,6 @@ interval = 5000
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:45:...%
-; format-underline = ${colors.green}
 format-foreground = ${colors.blue}
 
 [module/xkeyboard]
@@ -185,31 +190,27 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
-mount-1 = /home
+; mount-1 = /home
 
-label-mounted-underline = ${colors.cyan}
+label-mounted-underline = ${colors.darkmagenta}
 label-mounted = /: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.gray}
 
 [module/bspwm]
 type = internal/bspwm
-pin-workspaces = false
-label-focused = %index%
+pin-workspaces = true
 label-focused-foreground = ${colors.black}
 label-focused-background = ${colors.blue}
 label-focused-underline= ${colors.yellow}
 label-focused-padding = 1
 
-label-occupied = %index%
 label-occupied-underline = ${colors.blue}
 label-occupied-padding = 1
 
-label-urgent = %index%!
 label-urgent-background = ${colors.red}
 label-urgent-padding = 1
 
-label-empty = %index%
 label-empty-foreground = ${colors.lightgray}
 label-empty-padding = 1
 
@@ -218,11 +219,7 @@ type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
-
-; Only show workspaces on the same output as the bar
-;pin-workspaces = true
-
-label-mode-padding = 2
+label-mode-padding = 0
 label-mode-foreground = ${colors.white}
 label-mode-background = ${colors.darkyellow}
 
@@ -296,7 +293,7 @@ type = internal/memory
 interval = 2
 format-prefix = "🧠 "
 format-prefix-foreground = ${colors.gray}
-format-underline = ${colors.darkcyan}
+format-underline = ${colors.red}
 label = %percentage_used%%
 
 [module/wlan]
@@ -305,7 +302,7 @@ interface = wlp2s0
 interval = 3.0
 
 format-connected = 直 <label-connected>
-format-connected-underline = ${colors.darkmagenta}
+format-connected-underline = ${colors.green}
 label-connected = %essid%
 
 ;format-disconnected =
@@ -352,7 +349,7 @@ time = "%I:%M%p"
 ;time-alt = %H:%M:%S
 ;time-alt = %H:%M:%S
 
-format-prefix = " "
+format-prefix = "  "
 format-prefix-foreground = ${colors.gray}
 format-underline = ${colors.blue}
 
@@ -361,13 +358,14 @@ label = %date% %time%
 [module/volume]
 type = internal/pulseaudio
 
+click-right = mpc toggle
 format-volume = <label-volume> <bar-volume>
 label-volume = 
 label-volume-foreground = ${root.foreground}
 
-format-muted-prefix = " "
+label-muted =  "   "
 format-muted-foreground = ${colors.gray}
-label-muted = muted
+; label-muted = muted
 
 bar-volume-width = 10
 bar-volume-foreground-0 = ${colors.blue}
@@ -377,12 +375,12 @@ bar-volume-foreground-3 = ${colors.green}
 bar-volume-foreground-4 = ${colors.green}
 bar-volume-foreground-5 = ${colors.yellow}
 bar-volume-foreground-6 = ${colors.red}
-bar-volume-gradient = false
+bar-volume-gradient = true
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
 bar-volume-fill = =
 bar-volume-fill-font = 2
-bar-volume-empty = =
+bar-volume-empty = -
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.gray}
 
