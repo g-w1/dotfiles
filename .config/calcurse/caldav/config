@@ -1,0 +1,15 @@
+[General]
+
+
+Hostname = apidata.googleusercontent.com
+Path = /caldav/v2/goldman-wetzlerj24@learn.hohschools.org/events/
+AuthMethod = oauth2
+SyncFilter = cal
+DryRun = No
+
+
+[OAuth2]
+ClientID = 431598623710-n0r1rgn6dp4r0pljtcgljdnbtk26rtji.apps.googleusercontent.com
+ClientSecret = 0wlKFqN0GK3RxMH0lnpgDHCp
+Scope = https://www.googleapis.com/auth/calendar
+RedirectURI = http://127.0.0.1

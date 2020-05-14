@@ -1,0 +1,57 @@
+#!/bin/sh
+
+# Use neovim for vim if present.
+command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
+
+# Verbosity and settings that you pretty much just always are going to want.
+alias \
+	bat="cat /sys/class/power_supply/BAT?/capacity" \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -v" \
+	mkd="mkdir -pv" \
+	yt="youtube-dl --add-metadata -i" \
+	yta="yt -x -f bestaudio/best" \
+	ffmpeg="ffmpeg -hide_banner" \
+	mail="neomutt" \
+	la="ls -a" \
+	ll="ls -l" \
+	l="ls -la" \
+	psg="ps -A | grep" \
+	gacp="git add . && git commit && git push" \
+	gac="git add . && git commit"
+
+# Colorize commands when possible.
+alias \
+	ls="ls -hN --color=auto --group-directories-first" \
+	diff="diff --color=auto" \
+	ccat="highlight --out-format=ansi"
+
+# These common commands are just too long! Abbreviate them.
+alias \
+	ka="killall" \
+	g="git" \
+	sl="ls" \
+	trem="transmission-remote" \
+	YT="youtube-viewer -dp -C -7" \
+	sdn="sudo shutdown -h now" \
+	du="du -h" \
+	f="$FILE" \
+	e="$EDITOR" \
+	v="$EDITOR" \
+	p="sudo pacman" \
+	xi="sudo xbps-install" \
+	xr="sudo xbps-remove -R" \
+	cu="cd .." \
+	:q="exit" \
+	xq="xbps-query"
+
+# Some other stuff
+alias \
+	magit="nvim -c MagitOnly" \
+	fzf="find . | fzf" \
+	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" \
+	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
+	dvtm="dvtm -m ^n" \
+	6cord="6cord -t "Njg4NzQyODEwMDI2NzcwNDYx.XqX7YA.9nx-vy9XtrWnOAP219ivjMIiV0w"" \
+	tmux="tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"
