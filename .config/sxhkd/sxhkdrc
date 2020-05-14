@@ -23,7 +23,7 @@ super + n
 super + c
 	$TERMINAL -e calcurse
 super + v
-	$TERMINAL -e nvim -c VimwikiIndex
+	$TERMINAL -e cd /home/jacob/notes/
 super + shift + a
 	$TERMINAL -e alsamixer; pkill -RTMIN+10 blocks
 super + shift + c

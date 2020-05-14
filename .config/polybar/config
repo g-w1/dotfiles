@@ -128,7 +128,7 @@ scroll-down = bspwm-deskprev
 type = custom/script
 exec = news
 interval = 500
-format-underline = ${colors.black}
+format-underline = ${colors.yellow}
 click-left = $TERMINAL -e newsboat
 [module/pulseaudio]
 type = internal/pulseaudio
