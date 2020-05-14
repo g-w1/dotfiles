@@ -1,0 +1,2 @@
+#!/bin/bash
+calcurse-caldav --init keep-remote --authcode '4/zgGsV4k3I_iLOMt3xsBlyOfTDovMU-7nYa_uk-sARSodBgiHr-EKMpsjENpm8Qg8gDPmryfqWhI2a1U8wPeYOlk' && notify-send "the calendar just got updated📅"

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+countdown 2m; countdown 2m; countdown 2m
