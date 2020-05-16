@@ -4,7 +4,7 @@
 
 cmds="\
 lock screen	slock
-leave bspwm	kill -TERM $(pidof -s bspw)
+leave bspwm	killall bspwm
 reboot		sudo -A reboot
 shutdown	sudo -A shutdown -h now
 "

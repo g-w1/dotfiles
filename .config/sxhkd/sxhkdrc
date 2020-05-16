@@ -22,8 +22,8 @@ super + n
 	$TERMINAL -e newsboat
 super + c
 	$TERMINAL -e calcurse
-super + v
-	$TERMINAL -e cd /home/jacob/notes/
+# super + v
+# 	$TERMINAL -e cd /home/jacob/notes/
 super + shift + a
 	$TERMINAL -e alsamixer; pkill -RTMIN+10 blocks
 super + shift + c
@@ -89,18 +89,18 @@ super + {_,shift +} bracketleft
 	mpc seek -{10,120}
 # Increase volume
 super + equal
-	pamixer --allow-boost -i 5
+	pamixer --allow-boost -i 10
 # Decrease volume
 super + minus
-	pamixer --allow-boost -d 5
+	pamixer --allow-boost -d 10
 # super + shift + m
 # 	amixer sset Master toggle; pkill -RTMIN+10 blocks
 
 # Audiokeys
-XF86AudioMute
-	amixer sset Master toggle; pkill -RTMIN+10 blocks
+# XF86AudioMute
+# 	amixer sset Master toggle; pkill -RTMIN+10 blocks
 XF86Audio{Raise,Lower}Volume
-	amixer sset Master 5%{+,-}; pkill -RTMIN+10 blocks
+	pamixer --allow-boost {-i,-d} 10
 XF86Audio{Next,Prev}
 	mpc {next,prev}
 XF86Audio{Pause,Play,Stop}

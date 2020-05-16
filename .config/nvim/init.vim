@@ -9,6 +9,7 @@ endif
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'tpope/vim-surround'
+Plug 'vbe0201/vimdiscord'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/goyo.vim'
 Plug 'jreybert/vimagit'
@@ -17,16 +18,30 @@ Plug 'vimwiki/vimwiki'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
-Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'Townk/vim-autoclose'
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'roxma/nvim-yarp'
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-racer'
+Plug 'ncm2/ncm2-jedi'
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+set shortmess+=c
+inoremap <c-c> <ESC>
+
+
+" When the <Enter> key is pressed while the popup menu is visible, it only
+" hides the menu. Use this mapping to close the menu and also start a new
+" line.
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:airline_powerline_fonts = 1
 let g:deoplete#enable_at_startup = 1
 call plug#end()
@@ -51,10 +66,16 @@ set autoread
 	set wildmode=longest,list,full
 " Disables automatic commenting on newline:
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
+" fix werid combo of autoparens and deoplete
+let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 " Goyo plugin makes text more readable when writing prose:
 	" map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
-
+" fzf
+nnoremap <silent> <C-t> :call fzf#run(fzf#wrap({
+  \ "source": "git ls-files --others --cached --exclude-standard \| similar-sort " . @% . " \| grep -v " . @%,
+  \ "sink": "edit",
+  \ "options": "--tiebreak index"
+  \ }))<CR>
 " Spell-check set to <leader>o, 'o' for 'orthography':
 	map <leader>o :setlocal spell! spelllang=en_us<CR>
 
@@ -92,7 +113,7 @@ set autoread
 " Compile document, be it groff/LaTeX/markdown/etc.
 	map <leader>c :w! \| !compiler <c-r>%<CR>
 "formatting
-	map <leader>f :w! \| !black <c-r>%<CR>:e<CR>
+	map <leader>f :w! \| !formatter %<CR>:e<CR>
 
 
 " Open corresponding .pdf/.html or preview
