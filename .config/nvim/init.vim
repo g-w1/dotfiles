@@ -8,8 +8,8 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 endif
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
+Plug 'wincent/command-t'
 Plug 'tpope/vim-surround'
-Plug 'vbe0201/vimdiscord'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/goyo.vim'
 Plug 'jreybert/vimagit'
@@ -18,10 +18,7 @@ Plug 'vimwiki/vimwiki'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 Plug 'Townk/vim-autoclose'
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-racer'
@@ -32,8 +29,8 @@ Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 set shortmess+=c
 inoremap <c-c> <ESC>
-
-
+" command-t
+nmap <silent> <C-t> <Plug>(CommandT)
 " When the <Enter> key is pressed while the popup menu is visible, it only
 " hides the menu. Use this mapping to close the menu and also start a new
 " line.
@@ -68,14 +65,6 @@ set autoread
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " fix werid combo of autoparens and deoplete
 let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
-" Goyo plugin makes text more readable when writing prose:
-	" map <leader>f :Goyo \| set bg=light \| set linebreak<CR>
-" fzf
-nnoremap <silent> <C-t> :call fzf#run(fzf#wrap({
-  \ "source": "git ls-files --others --cached --exclude-standard \| similar-sort " . @% . " \| grep -v " . @%,
-  \ "sink": "edit",
-  \ "options": "--tiebreak index"
-  \ }))<CR>
 " Spell-check set to <leader>o, 'o' for 'orthography':
 	map <leader>o :setlocal spell! spelllang=en_us<CR>
 
@@ -104,7 +93,7 @@ nnoremap <silent> <C-t> :call fzf#run(fzf#wrap({
 	map <leader>s :!clear && shellcheck %<CR>
 
 " Open my bibliography file in split
-	map <leader>b :vsp<space>$BIB<CR>
+	" map <leader>b :vsp<space>$BIB<CR>
 	map <leader>r :vsp<space>$REFER<CR>
 
 " Replace all is aliased to S.
@@ -113,7 +102,7 @@ nnoremap <silent> <C-t> :call fzf#run(fzf#wrap({
 " Compile document, be it groff/LaTeX/markdown/etc.
 	map <leader>c :w! \| !compiler <c-r>%<CR>
 "formatting
-	map <leader>f :w! \| !formatter %<CR>:e<CR>
+	map <leader>f :w! \| !formatter <c-r>%<CR>:e<CR>
 
 
 " Open corresponding .pdf/.html or preview

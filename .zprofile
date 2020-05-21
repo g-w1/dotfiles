@@ -6,7 +6,7 @@ export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="brave"
+export BROWSER="firefox"
 export READER="zathura"
 
 # ~/ Clean-up:
@@ -120,3 +120,4 @@ ex=🎯:\
 # sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/larbs/ttymaps.kmap 2>/dev/null
 
 export PATH="/home/jacob/.local/share/cargo/bin:$PATH"
+export PATH="/home/jacob/.gem/ruby/2.7.0/bin:$PATH"

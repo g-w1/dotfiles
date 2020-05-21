@@ -16,6 +16,13 @@ if ! echo "$mainmonitor" | grep LVDS-1 >/dev/null 2>&1; then
 	xrandr --output "$mainmonitor" --auto --output LVDS1 --off
 fi
 
+my_laptop_external_monitor=$(xrandr --query | grep 'VGA-1')
+if [[ $my_laptop_external_monitor = *connected* ]]; then
+	bspc monitor VGA-1 -d 1 2 3 4 5
+	bspc monitor LVDS-1 -d  6 7 8 9 0
+else
+	bspc monitor LVDS-1 -d 1 2 3 4 5 6 7 8 9 0
+fi
 # Start workspaces on the main monitor.
 bspc monitor VGA-1 -d 1 2 3 4 5
 bspc monitor LVDS-1 -d  6 7 8 9 0
@@ -39,3 +46,4 @@ bspc rule -a Screenkey manage=off
 bspc rule -a st state=fullscreen
 bspc rule -a discord desktop='^7'
 bspc config external_rules_command "$(which floaters)"
+bspc rule -a Zathura state=tiled

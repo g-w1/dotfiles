@@ -363,7 +363,7 @@ format-volume = <label-volume> <bar-volume>
 label-volume = 
 label-volume-foreground = ${root.foreground}
 
-label-muted =  "   "
+label-muted =  "        "
 format-muted-foreground = ${colors.gray}
 ; label-muted = muted
 

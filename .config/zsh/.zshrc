@@ -69,7 +69,7 @@ bindkey -s '^o' 'lfcd\n'
 
 bindkey -s '^a' 'bc -l\n'
 
-bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
+bindkey -s '^t' 'cd "$(dirname "$(fzf)")"\n'
 
 bindkey '^[[P' delete-char
 
