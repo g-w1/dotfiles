@@ -4,7 +4,6 @@
 setxkbmap -variant colemak
 sxhkd&
 setxkbmap -variant colemak
-launch_polybar&
 bspc rule -r "*"
 xsetroot -cursor_name left_ptr
 # We look for a non-laptop monitor to use for default, but use the laptop
@@ -20,17 +19,11 @@ my_laptop_external_monitor=$(xrandr --query | grep 'VGA-1')
 if [[ $my_laptop_external_monitor = *connected* ]]; then
 	bspc monitor VGA-1 -d 1 2 3 4 5
 	bspc monitor LVDS-1 -d  6 7 8 9 0
+	launch_polybar&
 else
 	bspc monitor LVDS-1 -d 1 2 3 4 5 6 7 8 9 0
+	launch_polybar1m&
 fi
-# Start workspaces on the main monitor.
-bspc monitor VGA-1 -d 1 2 3 4 5
-bspc monitor LVDS-1 -d  6 7 8 9 0
-# bspc desktop -f 1
-
-# If you want a multi-monitor display or something else, I leave that to you to
-# arrange. I have this sensible default for most people's use cases.
-
 
 bspc config border_width 3
 bspc config window_gap 10

@@ -1,5 +1,6 @@
 let mapleader =","
 " cursors
+" this
 if exists('$TMUX')
     let &t_SI .= "\ePtmux;\e\e[=1c\e\\"
     let &t_EI .= "\ePtmux;\e\e[=2c\e\\"
@@ -189,3 +190,6 @@ endif
         \ 'complete_pattern': g:vimtex#re#ncm2#bibtex,
         \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
         \ })
+" undofile
+set undofile
+set undodir=/home/jacob/.config/nvim/vimundo/
