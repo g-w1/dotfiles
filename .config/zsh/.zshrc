@@ -2,14 +2,14 @@
 
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
-PS1="%B%{$fg[blue]%}[%{$fg[green]%}%n%{$fg[yellow]%}@%{$fg[red]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 
 # History in cache directory:
 HISTSIZE=10000
 SAVEHIST=10000
-# HISTFILE=~/.cache/zsh/history
+HISTFILE=~/.cache/zsh/history
 
 # Load aliases and shortcuts if existent.
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc"
@@ -69,7 +69,7 @@ bindkey -s '^o' 'lfcd\n'
 
 bindkey -s '^a' 'bc -l\n'
 
-bindkey -s '^t' 'cd "$(dirname "$(fzf)")"\n'
+bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 
 bindkey '^[[P' delete-char
 

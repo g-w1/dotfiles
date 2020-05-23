@@ -393,8 +393,8 @@
 #def_key "ctrl-p"
 #  set_selected_items_priority
 #
-#def_key "q"
-#  quit
+def_key "q"
+  quit
 #
 #
 #def_key "f"

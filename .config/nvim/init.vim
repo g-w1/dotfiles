@@ -1,5 +1,12 @@
 let mapleader =","
-
+" cursors
+if exists('$TMUX')
+    let &t_SI .= "\ePtmux;\e\e[=1c\e\\"
+    let &t_EI .= "\ePtmux;\e\e[=2c\e\\"
+ else
+    let &t_SI .= "\e[=1c"
+    let &t_EI .= "\e[=2c"
+ endif
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
 	silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
@@ -8,17 +15,15 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 endif
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
+Plug 'lervag/vimtex'
 Plug 'wincent/command-t'
+Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
-Plug 'preservim/nerdtree'
 Plug 'junegunn/goyo.vim'
-Plug 'jreybert/vimagit'
-Plug 'lukesmithxyz/vimling'
-Plug 'vimwiki/vimwiki'
+Plug 'junegunn/limelight.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
-Plug 'Townk/vim-autoclose'
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-racer'
@@ -28,6 +33,10 @@ set completeopt=noinsert,menuone,noselect
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 set shortmess+=c
+" for python in async
+let $PYTHONUNBUFFERED=1
+" for limelight
+	let g:limelight_conceal_ctermfg = 'gray'
 inoremap <c-c> <ESC>
 " command-t
 nmap <silent> <C-t> <Plug>(CommandT)
@@ -61,26 +70,21 @@ set autoread
 	set number relativenumber
 " Enable autocompletion:
 	set wildmode=longest,list,full
-" Disables automatic commenting on newline:
-	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-" fix werid combo of autoparens and deoplete
-let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 " Spell-check set to <leader>o, 'o' for 'orthography':
 	map <leader>o :setlocal spell! spelllang=en_us<CR>
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 	set splitbelow splitright
+" mapping j to gj for writing prose
+	autocmd FileType tex map j gj
+	autocmd FileType tex map k gk
+	autocmd FileType markdown map j gj
+	autocmd FileType markdown map k gk
 
-" Nerd tree
-	map <leader>n :NERDTreeToggle<CR>
-	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" vimling:
-	nm <leader>d :call ToggleDeadKeys()<CR>
-	imap <leader>d <esc>:call ToggleDeadKeys()<CR>a
-	nm <leader>i :call ToggleIPA()<CR>
-	imap <leader>i <esc>:call ToggleIPA()<CR>a
-	nm <leader>q :call ToggleProse()<CR>
+" writing:
+	map <leader>g :Goyo<CR>
+	autocmd! User GoyoEnter Limelight
+	autocmd! User GoyoLeave Limelight!
 " Shortcutting split navigation, saving a keypress:
 	map <C-h> <C-w>h
 	map <C-j> <C-w>j
@@ -100,9 +104,9 @@ let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 	nnoremap S :%s//g<Left><Left>
 
 " Compile document, be it groff/LaTeX/markdown/etc.
-	map <leader>c :w! \| !compiler <c-r>%<CR>
+	map <leader>c :w! \| :Dispatch compiler <c-r>%<CR>
 "formatting
-	map <leader>f :w! \| !formatter <c-r>%<CR>:e<CR>
+	map <leader>f :w! \| :Dispatch formatter <c-r>%<CR>:e<CR>
 
 
 " Open corresponding .pdf/.html or preview
@@ -112,21 +116,8 @@ let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 	autocmd VimLeave *.tex !texclear %
 
 " Ensure files are read as what I want:
-	let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-	map <leader>v :VimwikiIndex
-	let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
-	autocmd BufRead,BufNewFile /tmp/calcurse*,~/.calcurse/notes/* set filetype=markdown
-	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
-	autocmd BufRead,BufNewFile *.tex set filetype=tex
-
 " Save file as sudo on files that require root permission
 	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
-
-" Enable Goyo by default for mutt writting
-	" autocmd BufRead,BufNewFile /tmp/neomutt* let g:goyo_width=80
-	" autocmd BufRead,BufNewFile /tmp/neomutt* :Goyo | set bg=light
-	" autocmd BufRead,BufNewFile /tmp/neomutt* map ZZ :Goyo\|x!<CR>
-	" autocmd BufRead,BufNewFile /tmp/neomutt* map ZQ :Goyo\|q!<CR>
 
 " Automatically deletes all trailing whitespace and newlines at end of file on save.
 	autocmd BufWritePre * %s/\s\+$//e
@@ -143,3 +134,58 @@ let g:AutoClosePumvisible = {"ENTER": "<C-Y>", "ESC": "<ESC>"}
 if &diff
     highlight! link DiffText MatchParen
 endif
+" ncm2vimtex
+ au InsertEnter * call ncm2#enable_for_buffer()
+    au Filetype tex call ncm2#register_source({
+        \ 'name' : 'vimtex-cmds',
+        \ 'priority': 8,
+        \ 'complete_length': -1,
+        \ 'scope': ['tex'],
+        \ 'matcher': {'name': 'prefix', 'key': 'word'},
+        \ 'word_pattern': '\w+',
+        \ 'complete_pattern': g:vimtex#re#ncm2#cmds,
+        \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
+        \ })
+    au Filetype tex call ncm2#register_source({
+        \ 'name' : 'vimtex-labels',
+        \ 'priority': 8,
+        \ 'complete_length': -1,
+        \ 'scope': ['tex'],
+        \ 'matcher': {'name': 'combine',
+        \             'matchers': [
+        \               {'name': 'substr', 'key': 'word'},
+        \               {'name': 'substr', 'key': 'menu'},
+        \             ]},
+        \ 'word_pattern': '\w+',
+        \ 'complete_pattern': g:vimtex#re#ncm2#labels,
+        \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
+        \ })
+    au Filetype tex call ncm2#register_source({
+        \ 'name' : 'vimtex-files',
+        \ 'priority': 8,
+        \ 'complete_length': -1,
+        \ 'scope': ['tex'],
+        \ 'matcher': {'name': 'combine',
+        \             'matchers': [
+        \               {'name': 'abbrfuzzy', 'key': 'word'},
+        \               {'name': 'abbrfuzzy', 'key': 'abbr'},
+        \             ]},
+        \ 'word_pattern': '\w+',
+        \ 'complete_pattern': g:vimtex#re#ncm2#files,
+        \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
+        \ })
+    au Filetype tex call ncm2#register_source({
+        \ 'name' : 'bibtex',
+        \ 'priority': 8,
+        \ 'complete_length': -1,
+        \ 'scope': ['tex'],
+        \ 'matcher': {'name': 'combine',
+        \             'matchers': [
+        \               {'name': 'prefix', 'key': 'word'},
+        \               {'name': 'abbrfuzzy', 'key': 'abbr'},
+        \               {'name': 'abbrfuzzy', 'key': 'menu'},
+        \             ]},
+        \ 'word_pattern': '\w+',
+        \ 'complete_pattern': g:vimtex#re#ncm2#bibtex,
+        \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
+        \ })

@@ -15,3 +15,4 @@ cfi	${XDG_CONFIG_HOME:-$HOME/.config}/i3/config
 cfb	${XDG_CONFIG_HOME:-$HOME/.config}/i3blocks/config
 cfbs	${XDG_CONFIG_HOME:-$HOME/.config}/bspwm/bspwmrc
 cfpb	${XDG_CONFIG_HOME:-$HOME/.config}/polybar/config
+cft	${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf
