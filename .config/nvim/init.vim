@@ -117,7 +117,8 @@ set autoread
 
 " Runs a script that cleans out tex build files whenever I close out of a .tex file.
 	autocmd VimLeave *.tex !texclear %
-
+" tex spell checking
+	autocmd FileType tex set spell
 " Ensure files are read as what I want:
 " Save file as sudo on files that require root permission
 	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!

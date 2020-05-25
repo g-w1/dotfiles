@@ -1,3 +1,4 @@
+#!/bin/zsh
 # Luke's config for the Zoomer Shell
 
 # Enable colors and change prompt:
@@ -90,6 +91,11 @@ case "$TERM" in
         [ -n "$FBTERM" ] && export TERM=fbterm
         ;;
 esac
+########################## tmux colors
+if [ -n "$TMUX" ]; then
+	tmux set -a window-active-style "bg=#1C1C1C"
+	tmux set -a window-style "bg=#1C1C1C"
+fi
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 . /home/jacob/.config/zsh/z/z.sh

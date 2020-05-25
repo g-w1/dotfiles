@@ -39,7 +39,7 @@ alias \
 	sdn="sudo shutdown -h now" \
 	du="du -h" \
 	f="$FILE" \
-	e="$EDITOR" \
+	e="exit" \
 	v="$EDITOR" \
 	p="sudo pacman" \
 	xi="sudo xbps-install" \
