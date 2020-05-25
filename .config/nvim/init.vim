@@ -1,6 +1,6 @@
 """""""" leader
 let mapleader =","
-""""""""""""""" cursos
+""""""""""""""" cursors
 if exists('$TMUX')
     let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
@@ -15,6 +15,7 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
 	autocmd VimEnter * PlugInstall
 endif
+
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'lervag/vimtex'
 Plug 'wincent/command-t'
@@ -59,7 +60,7 @@ let g:airline#extensions#tabline#enabled = 1
 set bg=light
 set go=a
 set mouse=a
-set nohlsearch
+" set nohlsearch
 set noemoji
 set clipboard+=unnamedplus
 set autoread
@@ -75,7 +76,7 @@ set autoread
 " Spell-check set to <leader>o, 'o' for 'orthography':
 	map <leader>o :setlocal spell! spelllang=en_us<CR>
 
-" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
+" Splits open at the bottom and right, which is retarded, unlike vim defaults.
 	set splitbelow splitright
 " mapping j to gj for writing prose
 	autocmd FileType tex map j gj
@@ -136,7 +137,6 @@ set autoread
 if &diff
     highlight! link DiffText MatchParen
 endif
-" ncm2vimtex
 """""""""""""" completion for latex
  au InsertEnter * call ncm2#enable_for_buffer()
     au Filetype tex call ncm2#register_source({
@@ -199,7 +199,10 @@ set undodir=/home/jacob/.config/nvim/vimundo/
 """""""""""""""""' italics
 set t_ZH=^[[3m
 set t_ZR=^[[23m
+highlight Comment cterm=italic
 """"""""" colortheme
 colorscheme base16-default-dark
-let g:airline_theme='owo'
+let g:airline_theme='base16'
 set termguicolors
+""""""""""""" misc looks
+set cursorline

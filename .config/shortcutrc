@@ -12,6 +12,7 @@ bf="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/files" \
 bd="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/directories" \
 bw="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/bookmarks" \
 cfa="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" \
+cfs="$EDITOR /home/jacob/.local/src/st/config.h" \
 cfz="$EDITOR $ZDOTDIR/.zshrc" \
 cfv="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/init.vim" \
 cfm="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/mutt/muttrc" \

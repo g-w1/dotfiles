@@ -2,6 +2,7 @@ bf	${XDG_CONFIG_HOME:-$HOME/.config}/files
 bd	${XDG_CONFIG_HOME:-$HOME/.config}/directories
 bw	${XDG_CONFIG_HOME:-$HOME/.config}/bookmarks
 cfa	${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc
+cfs	/home/jacob/.local/src/st/config.h
 cfz	$ZDOTDIR/.zshrc
 cfv	${XDG_CONFIG_HOME:-$HOME/.config}/nvim/init.vim
 cfm	${XDG_CONFIG_HOME:-$HOME/.config}/mutt/muttrc

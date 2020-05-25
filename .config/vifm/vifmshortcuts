@@ -39,6 +39,7 @@ map bf :e ${XDG_CONFIG_HOME:-$HOME/.config}/files<CR>
 map bd :e ${XDG_CONFIG_HOME:-$HOME/.config}/directories<CR>
 map bw :e ${XDG_CONFIG_HOME:-$HOME/.config}/bookmarks<CR>
 map cfa :e ${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc<CR>
+map cfs :e /home/jacob/.local/src/st/config.h<CR>
 map cfz :e $ZDOTDIR/.zshrc<CR>
 map cfv :e ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/init.vim<CR>
 map cfm :e ${XDG_CONFIG_HOME:-$HOME/.config}/mutt/muttrc<CR>
