@@ -12,6 +12,7 @@
 # Your default LARBS WM is determined in your `~/.profile` on login.  Here we
 # run the proper command to run when the graphical environment starts.
 # exec startlxqt
+# exec firefox
 exec bspwm
 # exec dwm
 # To use i3, comment out the line above with dwm and uncomment these two:

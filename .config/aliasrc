@@ -1,6 +1,7 @@
 #!/bin/sh
 
 # Use neovim for vim if present.
+export EDITOR=nvim
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 
 # Verbosity and settings that you pretty much just always are going to want.
@@ -54,8 +55,9 @@ alias \
 	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" \
 	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
 	dvtm="dvtm -m ^n" \
-	6cord="6cord -t "Njg4NzQyODEwMDI2NzcwNDYx.XqX7YA.9nx-vy9XtrWnOAP219ivjMIiV0w"" \
-	tmux="tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"
+	t="tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"\
+	ta="t a -t"\
+	tl="tmux ls"
 rem () {
 mv $1 /home/jacob/storage_dont_delete/
 }

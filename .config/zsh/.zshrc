@@ -76,7 +76,20 @@ bindkey '^[[P' delete-char
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
-
+case "$TERM" in
+    xterm*)
+        if [ -e /usr/share/terminfo/x/xterm-256color ]; then
+            export TERM=xterm-256color
+        elif [ -e /usr/share/terminfo/x/xterm-color ]; then
+            export TERM=xterm-color;
+        else
+            export TERM=xterm
+        fi
+        ;;
+    linux)
+        [ -n "$FBTERM" ] && export TERM=fbterm
+        ;;
+esac
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 . /home/jacob/.config/zsh/z/z.sh

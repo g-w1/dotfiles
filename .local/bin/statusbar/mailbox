@@ -22,4 +22,4 @@ esac
 # [ "$unread" = "0" ] && [ "$icon" = "" ] || echo "📬 $unread$icon"
 
 unread="$(($(ls /home/jacob/.local/share/mail/home/INBOX/new | wc -l)"+"$(ls /home/jacob/.local/share/mail/school/INBOX/new | wc -l)))"
-echo "$unread"
+echo "  $unread"

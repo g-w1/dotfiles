@@ -1,20 +1,20 @@
+"""""""" leader
 let mapleader =","
-" cursors
-" this
+""""""""""""""" cursos
 if exists('$TMUX')
-    let &t_SI .= "\ePtmux;\e\e[=1c\e\\"
-    let &t_EI .= "\ePtmux;\e\e[=2c\e\\"
- else
-    let &t_SI .= "\e[=1c"
-    let &t_EI .= "\e[=2c"
- endif
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\e[5 q\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\e[2 q\<Esc>\\"
+else
+    let &t_SI = "\e[5 q"
+    let &t_EI = "\e[2 q"
+endif
+"'''''''''''''''''""" plugins
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
 	silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
 	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
 	autocmd VimEnter * PlugInstall
 endif
-
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'lervag/vimtex'
 Plug 'wincent/command-t'
@@ -24,15 +24,17 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'chriskempson/base16-vim'
 Plug 'tpope/vim-commentary'
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-racer'
 Plug 'ncm2/ncm2-jedi'
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
+"""""""""""""""""""""""""""""""""""""""""""' " stuffff for plugins
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
 set shortmess+=c
 " for python in async
 let $PYTHONUNBUFFERED=1
@@ -54,7 +56,6 @@ let g:deoplete#enable_at_startup = 1
 call plug#end()
 let g:livepreview_previewer = "zathura"
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='owo'
 set bg=light
 set go=a
 set mouse=a
@@ -105,9 +106,9 @@ set autoread
 	nnoremap S :%s//g<Left><Left>
 
 " Compile document, be it groff/LaTeX/markdown/etc.
-	map <leader>c :w! \| :Dispatch compiler <c-r>%<CR>
+	map <leader>c :w! \| :!compiler <c-r>%<CR>
 "formatting
-	map <leader>f :w! \| :Dispatch formatter <c-r>%<CR>:e<CR>
+	map <leader>f :w! \| :!formatter <c-r>%<CR>:e<CR>
 
 
 " Open corresponding .pdf/.html or preview
@@ -136,6 +137,7 @@ if &diff
     highlight! link DiffText MatchParen
 endif
 " ncm2vimtex
+"""""""""""""" completion for latex
  au InsertEnter * call ncm2#enable_for_buffer()
     au Filetype tex call ncm2#register_source({
         \ 'name' : 'vimtex-cmds',
@@ -190,6 +192,14 @@ endif
         \ 'complete_pattern': g:vimtex#re#ncm2#bibtex,
         \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
         \ })
-" undofile
+""""""""""""""""'  undofile
+" history for undo
 set undofile
 set undodir=/home/jacob/.config/nvim/vimundo/
+"""""""""""""""""' italics
+set t_ZH=^[[3m
+set t_ZR=^[[23m
+""""""""" colortheme
+colorscheme base16-default-dark
+let g:airline_theme='owo'
+set termguicolors
