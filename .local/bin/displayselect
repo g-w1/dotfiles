@@ -67,8 +67,7 @@ case "$chosen" in
 	*) xrandr --output "$chosen" --auto --scale 1.0x1.0 $(echo "$allposs" | grep -v "$chosen" | awk '{print "--output", $1, "--off"}' | tr '\n' ' ') ;;
 esac
 
-# setbg		# Fix background if screen size/arangement has changed.
-dwall -o firewatch
+setbg		# Fix background if screen size/arangement has changed.
 remaps		# Re-remap keys if keyboard added (for laptop bases)
 { killall dunst ; setsid dunst & } >/dev/null 2>&1 # Restart dunst to ensure proper location on screen
 sh /home/jacob/.config/bspwm/bspwmrc

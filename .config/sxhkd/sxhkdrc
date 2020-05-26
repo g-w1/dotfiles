@@ -9,7 +9,7 @@
 
 # Basic binds
 super + Return
-	$TERMINAL
+	$TERMINAL -e tmux
 super + d
 	dmenu_run
 super + r

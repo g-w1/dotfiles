@@ -83,6 +83,8 @@ set autoread
 	autocmd FileType tex map k gk
 	autocmd FileType markdown map j gj
 	autocmd FileType markdown map k gk
+	autocmd FileType mail map j gj
+	autocmd FileType mail map k gk
 
 " writing:
 	map <leader>g :Goyo<CR>
@@ -117,8 +119,10 @@ set autoread
 
 " Runs a script that cleans out tex build files whenever I close out of a .tex file.
 	autocmd VimLeave *.tex !texclear %
-" tex spell checking
+"spell checking
 	autocmd FileType tex set spell
+	autocmd FileType markdown set spell
+	autocmd FileType mail set spell
 " Ensure files are read as what I want:
 " Save file as sudo on files that require root permission
 	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
@@ -203,7 +207,9 @@ set t_ZR=^[[23m
 highlight Comment cterm=italic
 """"""""" colortheme
 colorscheme base16-default-dark
-let g:airline_theme='base16'
+let g:airline_theme='lucius'
 set termguicolors
+" no background
+hi Normal guibg=NONE ctermbg=NONE
 """"""""""""" misc looks
 set cursorline

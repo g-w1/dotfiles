@@ -94,7 +94,9 @@ esac
 ########################## tmux colors
 if [ -n "$TMUX" ]; then
 	tmux set -a window-active-style "bg=#1C1C1C"
-	tmux set -a window-style "bg=#1C1C1C"
+	tmux set -a window-style "bg=#282828"
+	# tmux set -g pane-active-border-style "bg=#1C1C1C"
+	# tmux set -g pane-border-style "bg=#282828"
 fi
 # Load zsh-syntax-highlighting; should be last.
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
