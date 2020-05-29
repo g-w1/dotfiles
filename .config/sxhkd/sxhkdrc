@@ -13,7 +13,7 @@ super + Return
 super + d
 	dmenu_run
 super + r
-	$TERMINAL -e $FILE
+	$TERMINAL -e lf
 super + e
 	$TERMINAL -e neomutt; pkill -RTMIN+12 blocks
 super + m
