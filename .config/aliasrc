@@ -60,5 +60,5 @@ alias \
 	ta="t a -t"\
 	tl="tmux ls"
 rem () {
-mv $1 /home/jacob/storage_dont_delete/
+mv $1 /home/jacob/.storage_dont_delete/
 }

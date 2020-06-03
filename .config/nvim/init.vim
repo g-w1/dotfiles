@@ -41,9 +41,12 @@ set shortmess+=c
 let $PYTHONUNBUFFERED=1
 " for limelight
 	let g:limelight_conceal_ctermfg = 'gray'
-inoremap <c-c> <ESC>
+" textyank highlight
+au TextYankPost * silent! lua return (not vim.v.event.visual) and require'vim.highlight'.on_yank()
 " command-t
 nmap <silent> <C-t> <Plug>(CommandT)
+let g:CommandTFileScanner = 'find'
+let g:CommandTMaxFiles =200000
 " When the <Enter> key is pressed while the popup menu is visible, it only
 " hides the menu. Use this mapping to close the menu and also start a new
 " line.
