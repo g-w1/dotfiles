@@ -1,5 +1,5 @@
-/home/jacob/Nextcloud/school/elatkamessay|247|1591017008
-/home/jacob/.local/bin|201|1590969450
+/home/jacob/.local/bin|204|1591378783
+/home/jacob/Nextcloud/school/elatkamessay|248|1591365021
 /home/jacob/Nextcloud/code/other/resources|52|1590762025
 /home/jacob/.cache/yay/mpd-discord-rpc/pkg|2|1589551495
 /home/jacob/Nextcloud/karate|10|1590784317
@@ -13,9 +13,9 @@
 /home/jacob/VirtualBox VMs|5|1591053309
 /usr/share/dynamic-wallpaper/images/firewatch|5|1589385042
 /usr/bin|11|1590191539
-/home/jacob/Documents/home/chinese|25|1590762087
+/home/jacob/Documents/home/chinese|31|1591366091
 /home/jacob/Downloads|461|1590784264
-/home/jacob/Nextcloud|167|1590962768
+/home/jacob/Nextcloud|169|1591364075
 /home/jacob/Documents/test|6|1587649807
 /home/jacob/.cache/zsh|3|1590424864
 /home/jacob/.config/newsboat|3|1590065858
@@ -37,12 +37,14 @@
 /home/jacob/.local/src/dwm|122|1590496941
 /home/jacob/Documents/school/pe/gameproj|10|1588698098
 /home/jacob/Documents/school|33|1590958226
+/var/cache/pacman/pkg|2|1591281674
 /home/jacob/.local/share/mail/school/INBOX|4|1591028523
 /home/jacob/Nextcloud/code/other|14|1590759200
 /home/jacob/Nextcloud/JRW(1)|6|1590962766
 /home/jacob/.local/src/st|173|1590500948
 /home/jacob/Documents/school/pres|20|1590971487
 /home/jacob/Nextcloud/code/rust/rustlings|42|1589723598
+/home/jacob/.local/share/larbs|3|1591378607
 /home/jacob/.cache/youtube-dl|4|1588367273
 /home/jacob/.cache/yay/mpd-discord-rpc/src|4|1589551492
 /home/jacob/Documents/books|6|1590332807
@@ -77,6 +79,7 @@
 /home/jacob/Documents/school/ss/great-d|3|1589203128
 /home/jacob/.local/share/mail/home/INBOX/new|7|1589416722
 /home/jacob/Documents/school/es|5|1590958208
+/var/cache/pacman|1|1591281670
 /home/jacob/.config/nvim/plugged/command-t|3|1589662689
 /home/jacob/.local/share/mail/home/INBOX|5|1589415811
 /home/jacob/.local/share/go|3|1589218777
@@ -100,7 +103,7 @@
 /home/jacob/.local/src/tmux-powerline|9|1590271453
 /home/jacob/.config/syncthing|3|1587594478
 /home/jacob/.config/nvim/plugged/command-t/ruby/command-t/ext/command-t|6|1589662973
-/home/jacob/Documents/home|19|1590873208
+/home/jacob/Documents/home|27|1591365077
 /home/jacob/.config/qutebrowser/bookmarks|35|1588768151
 /home|9|1589204020
 /home/jacob/.config/sxhkd|8|1589462767
@@ -126,7 +129,7 @@
 /home/jacob/Nextcloud/code/python|6|1590240010
 /home/jacob/.cache/yay/mpd-discord-rpc/pkg/mpd-discord-rpc/bin|3|1589551508
 /home/jacob/.local/share/osu/files|2|1591029037
-/home/jacob/Downloads/isos|26|1591032598
+/home/jacob/Downloads/isos|45|1591374686
 /home/jacob/.local/share/go/pkg|2|1589218780
 /home/jacob/Nextcloud/code/rust/better_fzf|2|1589643665
 /home/jacob/.local/share/mail|6|1589416680
@@ -146,7 +149,7 @@
 /home/jacob/Documents/school/ss/ww2|3|1590172392
 /usr/share/applications|6|1590870017
 /usr/share|2|1589291541
-/home/jacob/Nextcloud/Notes|6|1590962625
+/home/jacob/Nextcloud/Notes|7|1591364073
 /run|2|1589818156
 /home/jacob/.config/calcurse/hooks|4|1587932060
 /home/jacob/Games|2|1590968976
