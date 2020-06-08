@@ -14,7 +14,6 @@
 # exec startlxqt
 # exec firefox
 exec bspwm
-# exec startplasma-x11 # plasma
 # exec dwm
 # To use i3, comment out the line above with dwm and uncomment these two:
 # export STATUSBAR="i3blocks"
