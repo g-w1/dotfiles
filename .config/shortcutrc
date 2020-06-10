@@ -7,6 +7,7 @@ pp="cd ~/Pictures && ls -a" \
 vv="cd ~/Videos && ls -a" \
 cf="cd ${XDG_CONFIG_HOME:-$HOME/.config} && ls -a" \
 sc="cd ~/.local/bin && ls -a" \
+src="cd ~/.local/src && ls -a" \
 mn="cd /mnt && ls -a" \
 bf="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/files" \
 bd="$EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/directories" \
