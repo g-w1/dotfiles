@@ -9,7 +9,7 @@
 
 # Basic binds
 super + Return
-	$TERMINAL -e tmux
+	$TERMINAL #-e tmux
 super + d
 	dmenu_run
 super + r
@@ -30,10 +30,10 @@ super + shift + c
 	mpv --no-osc --no-input-default-bindings --input-conf=/dev/null --title='mpvfloat' /dev/video0
 super + shift + e
 	tutorialvids
-super + shift + w
-	$TERMINAL -e sudo nmtui
 super + w
 	$BROWSER
+super + shift + w
+	torbrowser-launcher
 super + a
 	$TERMINAL -e pulsemixer
 
@@ -171,6 +171,8 @@ super + {_,shift + }f
 # rotate current node 90 degrees
 super + y
 	bspc node @focused:/ -R 90
+super + shift + y
+	bspc node @focused:/ -R -90
 
 # swap the current node and the biggest local node
 super + space

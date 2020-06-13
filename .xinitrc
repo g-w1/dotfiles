@@ -14,6 +14,8 @@
 # exec startlxqt
 # exec firefox
 exec bspwm
+# exec sowm
+xset dpms 0 0 0
 # exec dwm
 # To use i3, comment out the line above with dwm and uncomment these two:
 # export STATUSBAR="i3blocks"
