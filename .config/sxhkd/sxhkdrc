@@ -31,9 +31,9 @@ super + shift + c
 super + shift + e
 	tutorialvids
 super + w
-	$BROWSER
-super + shift + w
 	torbrowser-launcher
+super + shift + w
+	$BROWSER
 super + a
 	$TERMINAL -e pulsemixer
 
