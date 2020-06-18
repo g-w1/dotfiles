@@ -10,6 +10,8 @@
 # Basic binds
 super + Return
 	$TERMINAL #-e tmux
+super + shift + Return
+	$TERMINAL -e tmux
 super + d
 	dmenu_run
 super + r
@@ -30,9 +32,9 @@ super + shift + c
 	mpv --no-osc --no-input-default-bindings --input-conf=/dev/null --title='mpvfloat' /dev/video0
 super + shift + e
 	tutorialvids
-super + w
-	torbrowser-launcher
 super + shift + w
+	torbrowser-launcher
+super + w
 	$BROWSER
 super + a
 	$TERMINAL -e pulsemixer

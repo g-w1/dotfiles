@@ -59,7 +59,5 @@ alias \
 	dvtm="dvtm -m ^n" \
 	t="tmux -f ${XDG_CONFIG_HOME:-$HOME/.config}/tmux/tmux.conf"\
 	ta="t a -t"\
+	opus2mp3="mkdir encoded; for f in *.opus; do ffmpeg -i "$f" "encoded/${f%.opus}.mp3"; done"\
 	tl="tmux ls"
-rem () {
-mv $1 /home/jacob/.storage_dont_delete/
-}
