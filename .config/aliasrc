@@ -21,8 +21,8 @@ alias \
 	l="ls -la" \
 	grep="grep --color=auto" \
 	psg="ps -A | grep" \
-	gacp="git add . && git commit && git push" \
-	gac="git add . && git commit"
+	gacp="git add . ; git commit ; git push" \
+	gac="git add . ; git commit"
 
 # Colorize commands when possible.
 alias \
