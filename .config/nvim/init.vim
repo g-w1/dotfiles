@@ -34,6 +34,7 @@ Plug 'ncm2/ncm2-racer'
 Plug 'ncm2/ncm2-jedi'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
+Plug 'christoomey/vim-tmux-navigator'
 """""""""""""""""""""""""""""""""""""""""""' " stuffff for plugins
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
@@ -97,10 +98,10 @@ set foldmethod=syntax
 	autocmd! User GoyoEnter Limelight
 	autocmd! User GoyoLeave Limelight!
 " Shortcutting split navigation, saving a keypress:
-	map <C-h> <C-w>h
-	map <C-j> <C-w>j
-	map <C-k> <C-w>k
-	map <C-l> <C-w>l
+	" map <C-h> <C-w>h
+	" map <C-j> <C-w>j
+	" map <C-k> <C-w>k
+	" map <C-l> <C-w>l
 " Replace ex mode with gq
 	map Q gq
 

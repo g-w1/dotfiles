@@ -14,5 +14,5 @@ cd "$dir" || exit
 
 case "$file" in
 	*\.py)black "$file";;
-	*\.rs) rustfmt "$file" ;;
+	*\.rs) cargo fmt ;;
 esac

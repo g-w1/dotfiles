@@ -3,7 +3,6 @@
 # Use neovim for vim if present.
 export EDITOR=nvim
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
-
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
 	cat="\bat"\
@@ -17,6 +16,7 @@ alias \
 	ffmpeg="ffmpeg -hide_banner" \
 	mail="neomutt" \
 	la="ls -a" \
+	al="ls -a" \
 	ll="ls -l" \
 	l="ls -la" \
 	grep="grep --color=auto" \
@@ -36,7 +36,7 @@ alias \
 	g="git" \
 	sl="ls" \
 	trem="transmission-remote" \
-	YT="youtube-viewer -dp -C -7" \
+	YT="youtube-viewer -dp -f -C -7" \
 	sdn="sudo shutdown -h now" \
 	du="du -h" \
 	f="$FILE" \
@@ -48,6 +48,7 @@ alias \
 	xr="sudo xbps-remove -R" \
 	cu="cd .." \
 	:q="exit" \
+	:wq="exit" \
 	xq="xbps-query"
 
 # Some other stuff

@@ -10,6 +10,7 @@
 
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/xprofile" ] && . "${XDG_CONFIG_HOME:-$HOME/.config}/xprofile"
 # Your default LARBS WM is determined in your `~/.profile` on login.  Here we
+setxkbmap colemak
 # run the proper command to run when the graphical environment starts.
 # exec startlxqt
 # exec firefox
