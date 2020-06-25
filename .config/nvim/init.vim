@@ -98,6 +98,7 @@ set foldmethod=syntax
 	autocmd! User GoyoEnter Limelight
 	autocmd! User GoyoLeave Limelight!
 " Shortcutting split navigation, saving a keypress:
+" dont need anymore because i use the tmux integrateion
 	" map <C-h> <C-w>h
 	" map <C-j> <C-w>j
 	" map <C-k> <C-w>k
