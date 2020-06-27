@@ -23,7 +23,7 @@ alias \
 	psg="ps -A | grep" \
 	gacp="git add . ; git commit ; git push" \
 	g="git" \
-	gs="git status" \
+	gis="git status" \
 	gac="git add . ; git commit"
 
 # Colorize commands when possible.
@@ -45,12 +45,12 @@ alias \
 	v="$EDITOR" \
 	vi="$EDITOR" \
 	p="sudo pacman" \
-	xi="sudo xbps-install" \
-	xr="sudo xbps-remove -R" \
 	cu="cd .." \
 	:q="exit" \
-	:wq="exit" \
-	xq="xbps-query"
+	:wq="exit"
+	# xi="sudo xbps-install" \
+	# xr="sudo xbps-remove -R" \
+	# xq="xbps-query"\
 
 # Some other stuff
 alias \
