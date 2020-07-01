@@ -5,7 +5,7 @@ export EDITOR=nvim
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
-	cat="\bat"\
+	cat="ccat --force"\
 	bat="\cat /sys/class/power_supply/BAT?/capacity" \
 	cp="cp -iv" \
 	mv="mv -iv" \
@@ -39,6 +39,7 @@ alias \
 	trem="transmission-remote" \
 	YT="youtube-viewer -dp -f -C -7" \
 	sdn="sudo shutdown -h now" \
+	sn="sudo shutdown -P now"\
 	du="du -h" \
 	f="$FILE" \
 	e="exit" \
@@ -46,6 +47,7 @@ alias \
 	vi="$EDITOR" \
 	p="sudo pacman" \
 	cu="cd .." \
+	alias fd="fd --no-ignore"\
 	:q="exit" \
 	:wq="exit"
 	# xi="sudo xbps-install" \

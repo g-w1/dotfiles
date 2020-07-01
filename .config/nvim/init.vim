@@ -35,6 +35,7 @@ Plug 'ncm2/ncm2-jedi'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'craigemery/vim-autotag'
 """""""""""""""""""""""""""""""""""""""""""' " stuffff for plugins
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
@@ -47,7 +48,7 @@ let $PYTHONUNBUFFERED=1
 au TextYankPost * silent! lua return (not vim.v.event.visual) and require'vim.highlight'.on_yank()
 " command-t
 nmap <silent> <C-t> <Plug>(CommandT)
-let g:CommandTFileScanner = 'find'
+let g:CommandTFileScanner = 'git'
 let g:CommandTMaxFiles =200000
 " When the <Enter> key is pressed while the popup menu is visible, it only
 " hides the menu. Use this mapping to close the menu and also start a new
@@ -70,7 +71,7 @@ set noemoji
 set clipboard+=unnamedplus
 set autoread
 " Some basics:
-	nnoremap c "_c
+	" nnoremap c "_c
 	set nocompatible
 	filetype plugin on
 	syntax on
