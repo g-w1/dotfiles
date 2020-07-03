@@ -58,7 +58,7 @@ inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 " Use <TAB> to select the popup menu:
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
 let g:deoplete#enable_at_startup = 1
 call plug#end()
 let g:livepreview_previewer = "zathura"

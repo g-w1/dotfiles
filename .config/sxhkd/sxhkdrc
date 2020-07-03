@@ -33,7 +33,7 @@ super + shift + a
 super + shift + c
 	mpv --no-osc --no-input-default-bindings --input-conf=/dev/null --title='mpvfloat' /dev/video0
 super + shift + w
-	torbrowser-launcher
+	firefox --private
 super + w
 	$BROWSER
 super + a

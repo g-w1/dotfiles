@@ -21,6 +21,7 @@ alias \
 	l="ls -la" \
 	grep="grep --color=auto" \
 	psg="ps -A | grep" \
+	psf="ps -A | fzf" \
 	gacp="git add . ; git commit ; git push" \
 	g="git" \
 	gis="git status" \
@@ -57,7 +58,6 @@ alias \
 # Some other stuff
 alias \
 	magit="nvim -c MagitOnly" \
-	fzf="find . | fzf" \
 	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" \
 	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
 	dvtm="dvtm -m ^n" \
@@ -66,3 +66,4 @@ alias \
 	opus2mp3="mkdir encoded; for f in *.opus; do ffmpeg -i "$f" "encoded/${f%.opus}.mp3"; done"\
 	c="clear"\
 	tl="tmux ls"
+	# fzf="find . | fzf" \
