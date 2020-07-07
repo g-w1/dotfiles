@@ -1,6 +1,7 @@
 hash -d h=~/
 hash -d d=~/Documents
 hash -d D=~/Downloads
+hash -d co=~/Nextcloud/code
 hash -d m=~/Music
 hash -d pp=~/Pictures
 hash -d vv=~/Videos

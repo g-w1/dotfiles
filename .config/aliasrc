@@ -50,6 +50,7 @@ alias \
 	cu="cd .." \
 	alias fd="fd --no-ignore"\
 	:q="exit" \
+	:w="clear"\
 	:wq="exit"
 	# xi="sudo xbps-install" \
 	# xr="sudo xbps-remove -R" \
