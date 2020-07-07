@@ -7,4 +7,5 @@ pp	~/Pictures
 vv	~/Videos
 cf	${XDG_CONFIG_HOME:-$HOME/.config}
 sc	~/.local/bin
+src	~/.local/src
 mn	/mnt

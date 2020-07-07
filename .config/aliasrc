@@ -2,7 +2,7 @@
 
 # Use neovim for vim if present.
 export EDITOR=nvim
-command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"
+command -v nvim >/dev/null && alias vimdiff="nvim -d"
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
 	cat="ccat --force"\
@@ -45,7 +45,7 @@ alias \
 	f="$FILE" \
 	e="exit" \
 	v="$EDITOR" \
-	vi="$EDITOR" \
+	vim="$EDITOR"\
 	p="sudo pacman" \
 	cu="cd .." \
 	alias fd="fd --no-ignore"\
