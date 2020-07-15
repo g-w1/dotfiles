@@ -66,7 +66,11 @@ let g:airline#extensions#tabline#enabled = 1
 set bg=light
 set go=a
 set mouse=a
-" set nohlsearch
+" searching
+	set hlsearch
+	set ignorecase
+	set smartcase
+	nnoremap <CR> :nohlsearch<cr>
 set noemoji
 set clipboard+=unnamedplus
 set autoread

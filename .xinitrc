@@ -21,3 +21,4 @@ xset dpms 0 0 0
 # To use i3, comment out the line above with dwm and uncomment these two:
 # export STATUSBAR="i3blocks"
 # exec i3
+nextcloud&

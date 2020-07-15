@@ -5,7 +5,6 @@ export EDITOR=nvim
 command -v nvim >/dev/null && alias vimdiff="nvim -d"
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
-	cat="ccat --force"\
 	bat="\cat /sys/class/power_supply/BAT?/capacity" \
 	cp="cp -iv" \
 	mv="mv -iv" \
@@ -20,7 +19,7 @@ alias \
 	ll="ls -l" \
 	l="ls -la" \
 	grep="grep --color=auto" \
-	psg="ps -A | grep" \
+	psg="ps -A | grep -i" \
 	psf="ps -A | fzf" \
 	gacp="git add . ; git commit ; git push" \
 	g="git" \
@@ -38,7 +37,7 @@ alias \
 	ka="killall" \
 	sl="ls" \
 	trem="transmission-remote" \
-	YT="youtube-viewer -dp -f -C -7" \
+	YT="youtube-viewer -C -7" \
 	sdn="sudo shutdown -h now" \
 	sn="sudo shutdown -P now"\
 	du="du -h" \

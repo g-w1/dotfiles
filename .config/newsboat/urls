@@ -1,5 +1,6 @@
-# YOUTUBE
+"----------- VIDS -----------"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "~Luke Smith (YouTube)"
+https://videos.lukesmith.xyz/feeds/videos.xml?videoChannelId=2 "~Luke Smith (PeerTube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA "~Mental Outlaw(YouTube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC7LucL7_goPJqpi4li2bRTw "~Gamer Leon (YouTube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "~Distro Tube(YouTube)"
@@ -12,8 +13,16 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCUICU6mgcyGy61pojwuWyHA "~A
 https://www.youtube.com/feeds/videos.xml?channel_id=UCtHaxi4GTYDpJgMSGy7AeSw "~Miachel Reeves (YouTube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCpIQa_A6HxHJr5dXgmJ3Q3w "~Simon Brea (YouTube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCkK9UDm_ZNrq_rIXCz3xCGA "~Lunduke (YouTube)"
-# FEEDS
-https://www.archlinux.org/feeds/news/ "Arch News"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCsnGwSIHyoYN0kiINAGUKxg "~Wolfgang's Channel (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCFzGyNKXPAglNq28qWYTDFA "~Kai Hendry (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCf93fPKwotph47H3_KDcRyg "~Kris Occhipinti (YouTube)"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCld68syR8Wi-GY_n4CaoJGA "~Brodie Robertson (YouTube)"
+"----------- FEEDS -----------"
+https://www.archlinux.org/feeds/news/
 https://lukesmith.xyz/rss.xml
-# PODCASTS
+https://www.serpentos.com/blog/index.xml
+https://christitus.com/index.xml
+"----------- PODCASTS -----------"
 https://feeds.fireside.fm/selfhosted/rss
+"----------- SUBREDDITS -----------"
+https://www.reddit.com/r/dailyprogrammer.rss "r/dailyprogrammer (Reddit)"
