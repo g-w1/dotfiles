@@ -36,7 +36,7 @@ bspc rule -a St:$dropdownname hidden=on
 bspc rule -a St:$dropdownname sticky=on
 bspc rule -a St:$dropdownname state=floating
 bspc rule -a Screenkey manage=off
-bspc rule -a st state=fullscreen
+# bspc rule -a st state=fullscreen
 bspc config external_rules_command "$(which floaters)"
 bspc rule -a Zathura state=tiled
 
