@@ -17,23 +17,34 @@ if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autolo
 endif
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
+" html tags
+Plug 'gregsexton/MatchTag'
+" latex auto completion
 Plug 'lervag/vimtex'
-Plug 'PotatoesMaster/i3-vim-syntax'
+" for vue.js
+Plug 'posva/vim-vue'
+" fuzzy file search. really nice
 Plug 'wincent/command-t'
+" gotta have tpope stuff
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+" writing
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+" line
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" colorscheme
 Plug 'chriskempson/base16-vim'
-Plug 'tpope/vim-commentary'
+" autocomplete: rust and python
 Plug 'roxma/nvim-yarp'
 Plug 'ncm2/ncm2'
 Plug 'ncm2/ncm2-racer'
 Plug 'ncm2/ncm2-jedi'
 Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
+" vim tmux
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'craigemery/vim-autotag'
 """""""""""""""""""""""""""""""""""""""""""' " stuffff for plugins
@@ -71,6 +82,10 @@ set mouse=a
 	set ignorecase
 	set smartcase
 	nnoremap <CR> :nohlsearch<cr>
+" tabs
+set tabstop=2
+set shiftwidth=2
+set expandtab
 set noemoji
 set clipboard+=unnamedplus
 set autoread
@@ -100,14 +115,17 @@ set foldmethod=syntax
 
 " writing:
 	map <leader>g :Goyo<CR>
-	autocmd! User GoyoEnter Limelight
-	autocmd! User GoyoLeave Limelight!
+	autocmd! User GoyoEnter Limelight; hi Normal guibg=NONE ctermbg=NONE
+	autocmd! User GoyoLeave Limelight!; hi Normal guibg=NONE ctermbg=NONE
+" tera html templates
+autocmd BufNewFile,BufRead *.tera set syntax=html
+
 " Shortcutting split navigation, saving a keypress:
 " dont need anymore because i use the tmux integrateion
-	" map <C-h> <C-w>h
-	" map <C-j> <C-w>j
-	" map <C-k> <C-w>k
-	" map <C-l> <C-w>l
+	map <C-h> <C-w>h
+	map <C-j> <C-w>j
+	map <C-k> <C-w>k
+	map <C-l> <C-w>l
 " Replace ex mode with gq
 	map Q gq
 
@@ -214,6 +232,8 @@ endif
 " history for undo
 set undofile
 set undodir=/home/jacob/.config/nvim/vimundo/
+" map ;w to write
+nmap ;w :w<CR>
 """""""""""""""""' italics
 set t_ZH=^[[3m
 set t_ZR=^[[23m

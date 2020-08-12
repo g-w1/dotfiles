@@ -42,9 +42,8 @@ alias \
 	trem="transmission-remote" \
 	YT="youtube-viewer -C -7" \
 	sdn="sudo shutdown -h now" \
-	sn="sudo shutdown -P now"\
+	doas="sudo"\
 	du="du -h" \
-	f="$FILE" \
 	e="exit" \
 	v="$EDITOR" \
 	vim="$EDITOR"\
@@ -61,8 +60,11 @@ alias \
 # Some other stuff
 alias \
 	ca="cargo" \
+	cab="cargo build" \
 	cabr="cargo build --release" \
 	car="cargo run" \
+	carr="cargo run --release" \
+	cart="cargo test" \
 	cac="cargo check" \
 	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" \
 	weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport" \
@@ -72,4 +74,10 @@ alias \
 	opus2mp3="mkdir encoded; for f in *.opus; do ffmpeg -i "$f" "encoded/${f%.opus}.mp3"; done"\
 	c="clear"\
 	tl="tmux ls"
-	# fzf="find . | fzf" \
+function controlt () {
+    curdir=`pwd`
+    cd `git rev-parse --show-toplevel`
+    files=$(git ls-files|fzf)
+    nvim $files
+    cd $curdir
+}

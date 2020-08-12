@@ -35,7 +35,7 @@ super + shift + c
 super + shift + w
 	icecat
 super + w
-	firefox --private
+	firefox
 super + a
 	$TERMINAL -e pulsemixer
 
@@ -216,8 +216,8 @@ super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} ^{1-9,10}
 
 # preselect the direction
-super + {u,o}
-	bspc node -p {south,east}
+# super + {u,o}
+# 	bspc node -p {south,east}
 
 # preselect the ratio
 super + ctrl + {1-9}
@@ -255,19 +255,19 @@ super + shift + d
 super { ,+ shift }+ z
 	bspc config window_gap $(($(bspc config window_gap) {+,-} 3))
 
-super + u
-	cat /tmp/dropdown | xargs -I win bspc node win --flag hidden;bspc node -f win
+# super + u
+# 	cat /tmp/dropdown | xargs -I win bspc node win --flag hidden;bspc node -f win
 
 # Make a windoww sticky/non-sticky
-super + o
-	bspc node -g sticky={on,off}
+# super + o
+# 	bspc node -g sticky={on,off}
 
  remove and restore polybar
 # super + b
 # 	\{ pgrep polybar && \{ killall polybar ; bspc config top_padding 0 \} \} || \{ launch_polybar ; bspc config top_padding 24 \}
 
 super + {i,o}
-	bspc node -f {prev,next}.local
+	bspc node -f {prev,next}.local.window
 super + shift + n
 	bspc node focused -t \~floating ; hover right
 super + shift + b

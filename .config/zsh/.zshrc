@@ -59,6 +59,7 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 # Use lf to switch directories and bind it to ctrl-o
 
 bindkey -s '^a' 'clear; bc -l\n'
+bindkey -s '^t' 'controlt\n'
 
 bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 
@@ -92,3 +93,5 @@ fi
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 . /home/jacob/.config/zsh/z/z.sh
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+echo "Todo:"
+work ls

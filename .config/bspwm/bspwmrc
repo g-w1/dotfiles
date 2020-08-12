@@ -15,26 +15,28 @@ xsetroot -cursor_name left_ptr
 # 	xrandr --output "$mainmonitor" --auto --output LVDS1 --off
 # fi
 
-my_laptop_external_monitor=$(xrandr --query | grep 'VGA-1')
-if [[ $my_laptop_external_monitor = *connected* ]]; then
+# my_laptop_external_monitor=$(xrandr --query | grep 'VGA-1')
+# if [[ $my_laptop_external_monitor == *connected* ]]; then
 	bspc monitor VGA-1 -d 1 2 3 4 5
 	bspc monitor LVDS-1 -d  6 7 8 9 0
+	~/.screenlayout/layout.sh
 	launch_polybar&
-else
-	bspc monitor LVDS-1 -d 1 2 3 4 5 6 7 8 9 0
-	launch_polybar1m&
-fi
+# else
+# bspc monitor VGA-1 -d 1 2 3 4 5 6 7 8 9 0
+# ~/.screenlayout/layout1m.sh
+# launch_polybar1m&
+# fi
 
 bspc config border_width 3
 bspc config window_gap 7
 bspc config top_padding 24	# top_padding I set equal to polybar's height
 bspc config focus_follows_pointer true
 
-dropdownname="dropdown"
-bspc query -N -n .hidden >/dev/null || setsid $TERMINAL -n "$dropdownname" -e dropdown >/dev/null 2>&1 &
-bspc rule -a St:$dropdownname hidden=on
-bspc rule -a St:$dropdownname sticky=on
-bspc rule -a St:$dropdownname state=floating
+# dropdownname="dropdown"
+# bspc query -N -n .hidden >/dev/null || setsid $TERMINAL -n "$dropdownname" -e dropdown >/dev/null 2>&1 &
+# bspc rule -a St:$dropdownname hidden=on
+# bspc rule -a St:$dropdownname sticky=on
+# bspc rule -a St:$dropdownname state=floating
 bspc rule -a Screenkey manage=off
 # bspc rule -a st state=fullscreen
 bspc config external_rules_command "$(which floaters)"

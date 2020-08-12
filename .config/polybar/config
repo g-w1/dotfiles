@@ -65,7 +65,7 @@ font-3 = Symbola:pixelsize=9;1
 ; Other modules: xkeyboard filesystem xbacklight backlight-acpi cpu memory temperature powermenu
 modules-left = bspwm xwindow
 ; modules-center =
-modules-right = mpd volume mutt-wizard newssec cpu memory wlan date filesystem powermenu
+modules-right = mpd volume mutt-wizard cpu memory wlan date filesystem powermenu
 
 tray-position = right
 tray-padding = 0
@@ -114,7 +114,7 @@ font-3 = Symbola:pixelsize=9;1
 ; Other modules: xkeyboard xbacklight backlight-acpi cpu temperature powermenu weather
 modules-left = bspwm xwindow
 ;modules-center =
-modules-right = mpd volume mutt-wizard newssec cpu memory wlan date filesystem powermenu
+modules-right = mpd volume mutt-wizard cpu memory wlan date filesystem powermenu
 
 tray-position = right
 tray-padding = 0
