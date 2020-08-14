@@ -19,6 +19,8 @@ endif
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 " html tags
 Plug 'gregsexton/MatchTag'
+" jinja2
+Plug 'lepture/vim-jinja'
 " latex auto completion
 Plug 'lervag/vimtex'
 " for vue.js

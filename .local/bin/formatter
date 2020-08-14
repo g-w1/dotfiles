@@ -13,7 +13,7 @@ base="${file%.*}"
 cd "$dir" || exit
 
 case "$file" in
-	*\.py)black "$file";;
+	*\.py)black -q "$file";;
 	*\.html)prettier --write "$file";;
 	*\.js)prettier --write "$file";;
 	*\.vue)prettier --write "$file";;
