@@ -26,11 +26,14 @@ Plug 'lervag/vimtex'
 " for vue.js
 Plug 'posva/vim-vue'
 " fuzzy file search. really nice
-Plug 'wincent/command-t'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " gotta have tpope stuff
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+" zig.vim for zig
+Plug 'ziglang/zig.vim'
 " writing
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
@@ -40,40 +43,29 @@ Plug 'vim-airline/vim-airline-themes'
 " colorscheme
 Plug 'chriskempson/base16-vim'
 " autocomplete: rust and python
-Plug 'roxma/nvim-yarp'
-Plug 'ncm2/ncm2'
-Plug 'ncm2/ncm2-racer'
-Plug 'ncm2/ncm2-jedi'
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " vim tmux
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'craigemery/vim-autotag'
+call plug#end()
 """""""""""""""""""""""""""""""""""""""""""' " stuffff for plugins
-autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
 set shortmess+=c
+" coc.nvim complete
+
 " for python in async
 let $PYTHONUNBUFFERED=1
 " for limelight
 	let g:limelight_conceal_ctermfg = 'gray'
 " textyank highlight
 au TextYankPost * silent! lua return (not vim.v.event.visual) and require'vim.highlight'.on_yank()
-" command-t
-nmap <silent> <C-t> <Plug>(CommandT)
-let g:CommandTFileScanner = 'git'
-let g:CommandTMaxFiles =200000
-" When the <Enter> key is pressed while the popup menu is visible, it only
-" hides the menu. Use this mapping to close the menu and also start a new
-" line.
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+" vimtex
+let g:tex_flavor = 'latex'
+" fzf
+map <C-t> :GFiles<CR>
+map <C-f> :Rg<CR>
+let g:fzf_buffers_jump = 1
 
-" Use <TAB> to select the popup menu:
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" let g:airline_powerline_fonts = 1
-let g:deoplete#enable_at_startup = 1
-call plug#end()
 let g:livepreview_previewer = "zathura"
 let g:airline#extensions#tabline#enabled = 1
 set bg=light
@@ -175,61 +167,6 @@ autocmd BufNewFile,BufRead *.tera set syntax=html
 if &diff
     highlight! link DiffText MatchParen
 endif
-"""""""""""""" completion for latex
- au InsertEnter * call ncm2#enable_for_buffer()
-    au Filetype tex call ncm2#register_source({
-        \ 'name' : 'vimtex-cmds',
-        \ 'priority': 8,
-        \ 'complete_length': -1,
-        \ 'scope': ['tex'],
-        \ 'matcher': {'name': 'prefix', 'key': 'word'},
-        \ 'word_pattern': '\w+',
-        \ 'complete_pattern': g:vimtex#re#ncm2#cmds,
-        \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
-        \ })
-    au Filetype tex call ncm2#register_source({
-        \ 'name' : 'vimtex-labels',
-        \ 'priority': 8,
-        \ 'complete_length': -1,
-        \ 'scope': ['tex'],
-        \ 'matcher': {'name': 'combine',
-        \             'matchers': [
-        \               {'name': 'substr', 'key': 'word'},
-        \               {'name': 'substr', 'key': 'menu'},
-        \             ]},
-        \ 'word_pattern': '\w+',
-        \ 'complete_pattern': g:vimtex#re#ncm2#labels,
-        \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
-        \ })
-    au Filetype tex call ncm2#register_source({
-        \ 'name' : 'vimtex-files',
-        \ 'priority': 8,
-        \ 'complete_length': -1,
-        \ 'scope': ['tex'],
-        \ 'matcher': {'name': 'combine',
-        \             'matchers': [
-        \               {'name': 'abbrfuzzy', 'key': 'word'},
-        \               {'name': 'abbrfuzzy', 'key': 'abbr'},
-        \             ]},
-        \ 'word_pattern': '\w+',
-        \ 'complete_pattern': g:vimtex#re#ncm2#files,
-        \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
-        \ })
-    au Filetype tex call ncm2#register_source({
-        \ 'name' : 'bibtex',
-        \ 'priority': 8,
-        \ 'complete_length': -1,
-        \ 'scope': ['tex'],
-        \ 'matcher': {'name': 'combine',
-        \             'matchers': [
-        \               {'name': 'prefix', 'key': 'word'},
-        \               {'name': 'abbrfuzzy', 'key': 'abbr'},
-        \               {'name': 'abbrfuzzy', 'key': 'menu'},
-        \             ]},
-        \ 'word_pattern': '\w+',
-        \ 'complete_pattern': g:vimtex#re#ncm2#bibtex,
-        \ 'on_complete': ['ncm2#on_complete#omni', 'vimtex#complete#omnifunc'],
-        \ })
 """"""""""""""""'  undofile
 " history for undo
 set undofile

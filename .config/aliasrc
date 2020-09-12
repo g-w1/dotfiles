@@ -73,7 +73,8 @@ alias \
 	ta="t a"\
 	opus2mp3="mkdir encoded; for f in *.opus; do ffmpeg -i "$f" "encoded/${f%.opus}.mp3"; done"\
 	c="clear"\
-	tl="tmux ls"
+	tl="tmux ls"\
+  serve="live-server"
 function controlt () {
     curdir=`pwd`
     cd `git rev-parse --show-toplevel`

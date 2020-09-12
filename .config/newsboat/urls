@@ -1,17 +1,7 @@
 "----------- VIDS -----------"
-https://videos.lukesmith.xyz/feeds/videos.xml?videoChannelId=2 "~Luke Smith (PeerTube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC7YOGHUfC1Tb6E4pudI9STA "~Mental Outlaw(YouTube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCXPHFM88IlFn68OmLwtPmZA "~Greg Hurrell (YouTube)"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCUICU6mgcyGy61pojwuWyHA "~Andrew Kelly (YouTube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCtHaxi4GTYDpJgMSGy7AeSw "~Miachel Reeves (YouTube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCkK9UDm_ZNrq_rIXCz3xCGA "~Lunduke (YouTube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCR1uNZFzyXOuty6FK8hXGxQ "~Recurse Center (YouTube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC7LucL7_goPJqpi4li2bRTw "~Gamer Leon (YouTube)"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC-8QAzbLcRglXeN_MY9blyw "~Ben Awad (YouTube)"
 "----------- FEEDS -----------"
+https://blaggregator.recurse.com/atom.xml?token=b494c93b1471479382edc6b955042494
 https://www.archlinux.org/feeds/news/
-https://lukesmith.xyz/rss.xml
 https://andrewkelley.me/rss.xml
 https://joy.recurse.com/feed.atom
-https://miles.land/index.xml
-https://nitter.net/Snowden/rss "~Snowden"
