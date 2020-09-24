@@ -80,8 +80,8 @@ function controlt () {
     cd `git rev-parse --show-toplevel`
     file=$(git ls-files|fzf)
     case $? in
-      1) nvim $file;;
       130) ;;
+      *) nvim $file;;
     esac
     cd $curdir
 }
