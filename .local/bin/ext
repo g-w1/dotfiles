@@ -1,44 +1,83 @@
-#!/bin/sh
+#!/bin/zsh
+alias x=extract
 
-# A general, all-purpose extraction script. Not all extraction programs here
-# are installed by LARBS automatically.
-#
-# Default behavior: Extract archive into new directory
-# Behavior with `-c` option: Extract contents into current directory
+extract() {
+	local remove_archive
+	local success
+	local extract_dir
 
-while getopts "hc" o; do case "${o}" in
-	c) extracthere="True" ;;
-	*) printf "Options:\\n   -c: Extract archive into current directory rather than a new one.\\n" && exit ;;
-esac done
+	if (( $# == 0 )); then
+		cat <<-'EOF' >&2
+			Usage: extract [-option] [file ...]
 
-if [ -z "$extracthere" ]; then
-	archive="$(readlink -f "$*")" &&
-	directory="$(echo "$archive" | sed 's/\.[^\/.]*$//')" &&
-	mkdir -p "$directory" &&
-	cd "$directory" || exit
-else
-	archive="$(readlink -f "$(echo "$*" | cut -d' ' -f2)")"
-fi
+			Options:
+			    -r, --remove    Remove archive after unpacking.
+		EOF
+	fi
 
-[ "$archive" = "" ] && printf "Give archive to extract as argument.\\n" && exit
+	remove_archive=1
+	if [[ "$1" == "-r" ]] || [[ "$1" == "--remove" ]]; then
+		remove_archive=0
+		shift
+	fi
 
-if [ -f "$archive" ] ; then
-	case "$archive" in
-		*.tar.bz2|*.tbz2) tar xvjf "$archive" ;;
-		*.tar.xz) tar -xf "$archive" ;;
-		*.tar.gz|*.tgz) tar xvzf "$archive" ;;
-		*.lzma) unlzma "$archive" ;;
-		*.bz2) bunzip2 "$archive" ;;
-		*.rar) unrar x -ad "$archive" ;;
-		*.gz) gunzip "$archive" ;;
-		*.tar) tar xvf "$archive" ;;
-		*.zip) unzip "$archive" ;;
-		*.Z) uncompress "$archive" ;;
-		*.7z) 7z x "$archive" ;;
-		*.xz) unxz "$archive" ;;
-		*.exe) cabextract "$archive" ;;
-		*) printf "extract: '%s' - unknown archive method\\n" "$archive" ;;
-	esac
-else
-	printf "File \"%s\" not found.\\n" "$archive"
-fi
+	while (( $# > 0 )); do
+		if [[ ! -f "$1" ]]; then
+			echo "extract: '$1' is not a valid file" >&2
+			shift
+			continue
+		fi
+
+		success=0
+		extract_dir="${1:t:r}"
+		case "${1:l}" in
+			(*.tar.gz|*.tgz) (( $+commands[pigz] )) && { pigz -dc "$1" | tar xv } || tar zxvf "$1" ;;
+			(*.tar.bz2|*.tbz|*.tbz2) tar xvjf "$1" ;;
+			(*.tar.xz|*.txz)
+				tar --xz --help &> /dev/null \
+				&& tar --xz -xvf "$1" \
+				|| xzcat "$1" | tar xvf - ;;
+			(*.tar.zma|*.tlz)
+				tar --lzma --help &> /dev/null \
+				&& tar --lzma -xvf "$1" \
+				|| lzcat "$1" | tar xvf - ;;
+			(*.tar.zst|*.tzst)
+				tar --zstd --help &> /dev/null \
+				&& tar --zstd -xvf "$1" \
+				|| zstdcat "$1" | tar xvf - ;;
+			(*.tar) tar xvf "$1" ;;
+			(*.tar.lz) (( $+commands[lzip] )) && tar xvf "$1" ;;
+			(*.tar.lz4) lz4 -c -d "$1" | tar xvf - ;;
+			(*.tar.lrz) (( $+commands[lrzuntar] )) && lrzuntar "$1" ;;
+			(*.gz) (( $+commands[pigz] )) && pigz -dk "$1" || gunzip -k "$1" ;;
+			(*.bz2) bunzip2 "$1" ;;
+			(*.xz) unxz "$1" ;;
+			(*.lrz) (( $+commands[lrunzip] )) && lrunzip "$1" ;;
+			(*.lz4) lz4 -d "$1" ;;
+			(*.lzma) unlzma "$1" ;;
+			(*.z) uncompress "$1" ;;
+			(*.zip|*.war|*.jar|*.sublime-package|*.ipa|*.ipsw|*.xpi|*.apk|*.aar|*.whl) unzip "$1" -d $extract_dir ;;
+			(*.rar) unrar x -ad "$1" ;;
+			(*.rpm) mkdir "$extract_dir" && cd "$extract_dir" && rpm2cpio "../$1" | cpio --quiet -id && cd .. ;;
+			(*.7z) 7za x "$1" ;;
+			(*.deb)
+				mkdir -p "$extract_dir/control"
+				mkdir -p "$extract_dir/data"
+				cd "$extract_dir"; ar vx "../${1}" > /dev/null
+				cd control; tar xzvf ../control.tar.gz
+				cd ../data; extract ../data.tar.*
+				cd ..; rm *.tar.* debian-binary
+				cd ..
+			;;
+			(*.zst) unzstd "$1" ;;
+			(*)
+				echo "extract: '$1' cannot be extracted" >&2
+				success=1
+			;;
+		esac
+
+		(( success = $success > 0 ? $success : $? ))
+		(( $success == 0 )) && (( $remove_archive == 0 )) && rm "$1"
+		shift
+	done
+}

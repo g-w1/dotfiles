@@ -20,4 +20,5 @@ case "$file" in
 	*\.md)prettier --write "$file";;
 	*\.json)prettier --write "$file";;
 	*\.rs) cargo fmt ;;
+	# *\.hs) haskell-formatter --force --input "$file" --output "$file" ;;
 esac

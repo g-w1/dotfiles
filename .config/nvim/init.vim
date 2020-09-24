@@ -19,6 +19,8 @@ endif
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 " html tags
 Plug 'gregsexton/MatchTag'
+" haskell
+Plug 'neovimhaskell/haskell-vim'
 " jinja2
 Plug 'lepture/vim-jinja'
 " latex auto completion
@@ -46,13 +48,20 @@ Plug 'chriskempson/base16-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " vim tmux
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'craigemery/vim-autotag'
+" conceal
+Plug 'g-w1/vim-conceal'
 call plug#end()
 """""""""""""""""""""""""""""""""""""""""""' " stuffff for plugins
 set completeopt=noinsert,menuone,noselect
 set shortmess+=c
-" coc.nvim complete
-
+" go to definition
+nmap <silent> gd <plug>(coc-definition)
+let g:coc_user_config = {}
+let g:coc_user_config['coc.preferences.jumpCommand'] = ':tabe'
+" go to errors next
+nmap <silent> gne <Plug>(coc-diagnostic-next)
+nmap <silent> gpe <Plug>(coc-diagnostic-prev)
+"
 " for python in async
 let $PYTHONUNBUFFERED=1
 " for limelight
@@ -65,8 +74,8 @@ let g:tex_flavor = 'latex'
 map <C-t> :GFiles<CR>
 map <C-f> :Rg<CR>
 let g:fzf_buffers_jump = 1
-
-let g:livepreview_previewer = "zathura"
+let g:fzf_layout = {'down': '~30%'}
+" airline/gui
 let g:airline#extensions#tabline#enabled = 1
 set bg=light
 set go=a
@@ -75,7 +84,7 @@ set mouse=a
 	set hlsearch
 	set ignorecase
 	set smartcase
-	nnoremap <CR> :nohlsearch<cr>
+	nnoremap <CR> :nohlsearch<cr>a<ESC>
 " tabs
 set tabstop=2
 set shiftwidth=2
@@ -92,8 +101,6 @@ set autoread
 	set number relativenumber
 " Enable autocompletion:
 	set wildmode=longest,list,full
-" folding
-set foldmethod=syntax
 " Spell-check set to <leader>o, 'o' for 'orthography':
 	map <leader>o :setlocal spell! spelllang=en_us<CR>
 
@@ -148,6 +155,7 @@ autocmd BufNewFile,BufRead *.tera set syntax=html
 	autocmd FileType tex set spell
 	autocmd FileType markdown set spell
 	autocmd FileType mail set spell
+	autocmd FileType text set spell
 " Ensure files are read as what I want:
 " Save file as sudo on files that require root permission
 	cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
