@@ -21,6 +21,8 @@ call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"
 Plug 'gregsexton/MatchTag'
 " haskell
 Plug 'neovimhaskell/haskell-vim'
+" toml
+Plug 'cespare/vim-toml'
 " jinja2
 Plug 'lepture/vim-jinja'
 " latex auto completion
@@ -179,8 +181,8 @@ endif
 " history for undo
 set undofile
 set undodir=/home/jacob/.config/nvim/vimundo/
-" map ;w to write
-nmap ;w :w<CR>
+" map ;w to update
+nmap ;w :up<CR>
 """""""""""""""""' italics
 set t_ZH=^[[3m
 set t_ZR=^[[23m

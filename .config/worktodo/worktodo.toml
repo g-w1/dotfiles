@@ -1,0 +1,5 @@
+emojis = false
+backticks = false
+verbose = false
+show_id_in_ls = false
+ask_for_confirm = false
