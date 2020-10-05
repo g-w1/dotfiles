@@ -95,3 +95,6 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 echo "Todo:"
 work ls
+# if [[ ! -v TMUX && $TERM_PROGRAM != "vscode" ]]; then
+# 	tmux_chooser && exit
+# fi

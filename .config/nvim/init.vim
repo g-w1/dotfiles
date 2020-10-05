@@ -46,7 +46,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " colorscheme
 Plug 'chriskempson/base16-vim'
-" autocomplete: rust and python
+" autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " vim tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -57,12 +57,15 @@ call plug#end()
 set completeopt=noinsert,menuone,noselect
 set shortmess+=c
 " go to definition
-nmap <silent> gd <plug>(coc-definition)
-let g:coc_user_config = {}
-let g:coc_user_config['coc.preferences.jumpCommand'] = ':tabe'
+nmap <silent> gd <Plug>(coc-definition)
+" rename
+nmap <silent> <leader>rn <Plug>(coc-rename)
 " go to errors next
 nmap <silent> gne <Plug>(coc-diagnostic-next)
 nmap <silent> gpe <Plug>(coc-diagnostic-prev)
+" better brackets
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 "
 " for python in async
 let $PYTHONUNBUFFERED=1
@@ -182,7 +185,7 @@ endif
 set undofile
 set undodir=/home/jacob/.config/nvim/vimundo/
 " map ;w to update
-nmap ;w :up<CR>
+nmap ;w :w<CR>
 """""""""""""""""' italics
 set t_ZH=^[[3m
 set t_ZR=^[[23m

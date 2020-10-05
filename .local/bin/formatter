@@ -20,5 +20,6 @@ case "$file" in
 	*\.md)prettier --write "$file";;
 	*\.json)prettier --write "$file";;
 	*\.rs) cargo fmt ;;
+	*\.c|*\.cpp) clang-format -i "$file" ;;
 	# *\.hs) haskell-formatter --force --input "$file" --output "$file" ;;
 esac

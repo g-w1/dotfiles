@@ -10,6 +10,8 @@
 # Basic binds
 super + Return
 	$TERMINAL #-e tmux
+super + Escape
+  wimp
 super + shift + Return
 	$TERMINAL -e tmux
 super + d
