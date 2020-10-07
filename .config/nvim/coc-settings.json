@@ -3,7 +3,8 @@
     "rust",
     "json",
     "c",
-    "cpp"
+    "cpp",
+    "zig"
   ],
   "coc.preferences.bracketEnterImprove": true,
   "coc.preferences.jumpCommand": "tabe",
@@ -23,6 +24,12 @@
       "filetypes": [
         "haskell",
         "lhaskell"
+      ]
+    },
+    "zls": {
+      "command": "zls",
+      "filetypes": [
+        "zig"
       ]
     }
   }

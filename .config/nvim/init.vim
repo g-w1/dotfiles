@@ -66,7 +66,8 @@ nmap <silent> gpe <Plug>(coc-diagnostic-prev)
 " better brackets
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-"
+" ezzzzzzzzzz (i made this lang up)
+autocmd BufNewFile,BufRead *.ez set commentstring=[%s]
 " for python in async
 let $PYTHONUNBUFFERED=1
 " for limelight
