@@ -19,6 +19,8 @@ endif
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 " html tags
 Plug 'gregsexton/MatchTag'
+" ez!!!
+Plug 'g-w1/ez.vim'
 " haskell
 Plug 'neovimhaskell/haskell-vim'
 " toml

@@ -25,12 +25,6 @@
         "haskell",
         "lhaskell"
       ]
-    },
-    "zls": {
-      "command": "zls",
-      "filetypes": [
-        "zig"
-      ]
     }
   }
 }

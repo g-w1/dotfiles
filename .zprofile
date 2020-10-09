@@ -144,3 +144,4 @@ export PATH="/home/jacob/.gem/ruby/2.7.0/bin:$PATH"
 #     FBTERM=1 exec fbterm
 # fi
 export PATH=~/.npm-global/bin:$PATH
+export PATH=~/Nextcloud/code/other/zig/build/bin:$PATH
