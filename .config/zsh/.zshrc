@@ -93,8 +93,6 @@ fi
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 . /home/jacob/.config/zsh/z/z.sh
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+. /home/jacob/.nix-profile/etc/profile.d/nix.sh
 echo "Todo:"
 work ls
-# if [[ ! -v TMUX && $TERM_PROGRAM != "vscode" ]]; then
-# 	tmux_chooser && exit
-# fi

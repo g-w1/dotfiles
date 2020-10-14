@@ -37,7 +37,7 @@ super + shift + c
 super + shift + w
 	icecat
 super + w
-	firefox
+	$BROWSER
 super + a
 	$TERMINAL -e pulsemixer
 

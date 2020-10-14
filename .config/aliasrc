@@ -85,3 +85,6 @@ function controlt () {
     esac
     cd $curdir
 }
+function rgl () {
+  rg --color=always $1 | less -r
+}

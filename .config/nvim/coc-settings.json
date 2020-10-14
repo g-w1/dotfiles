@@ -4,7 +4,7 @@
     "json",
     "c",
     "cpp",
-    "zig"
+    "python"
   ],
   "coc.preferences.bracketEnterImprove": true,
   "coc.preferences.jumpCommand": "tabe",
@@ -24,6 +24,12 @@
       "filetypes": [
         "haskell",
         "lhaskell"
+      ]
+    },
+    "zls": {
+      "command": "/home/jacob/Nextcloud/code/other/zls/zig-cache/bin/zls",
+      "filetypes": [
+        "zig"
       ]
     }
   }
