@@ -86,5 +86,5 @@ function controlt () {
     cd $curdir
 }
 function rgl () {
-  rg --color=always $1 | less -r
+  rg --color=always $@ | less -r
 }

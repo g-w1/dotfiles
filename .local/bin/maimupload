@@ -1,0 +1,16 @@
+#!/bin/sh
+
+## CONFIG
+jira_cli_path=`which jira`
+## END CONFIG
+appendThing () {
+	stdin=`cat /dev/stdin`
+	link=`printf "%s&p=1" $stdin`
+	printf "$link" | xclip -sel clip
+}
+
+case "$(printf "a selected area\\ncurrent window\\nfull screen" | dmenu -l 6 -i -p "Screenshot which area?")" in
+	"a selected area")  maim -s /tmp/"jira-screen-sel.png" ; $jira_cli_path send /tmp/"jira-screen-sel.png"| head -n3 | tail -n1 | appendThing ;;
+	"current window")  maim -i "$(xdotool getactivewindow)" /tmp/"jira-screen-win.png" ; $jira_cli_path send /tmp/"jira-screen-win.png"| head -n3 | tail -n1 | appendThing ;;
+	"full screen")  maim /tmp/"jira-screen-full.png" ; $jira_cli_path send /tmp/"jira-screen-full.png"| head -n3 | tail -n1 | appendThing ;;
+esac

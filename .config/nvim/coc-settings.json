@@ -27,7 +27,7 @@
       ]
     },
     "zls": {
-      "command": "/home/jacob/Nextcloud/code/other/zls/zig-cache/bin/zls",
+      "command": "/home/jacob/Nextcloud/code/zig/zls/zig-cache/bin/zls",
       "filetypes": [
         "zig"
       ]

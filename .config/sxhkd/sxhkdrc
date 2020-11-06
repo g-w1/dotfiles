@@ -9,15 +9,13 @@
 
 # Basic binds
 super + Return
-	$TERMINAL #-e tmux
+	$TERMINAL
 super + Escape
   wimp
 super + shift + Return
 	$TERMINAL -e tmux
 super + d
 	dmenu_run
-super + r
-	$TERMINAL -e lf
 super + e
 	$TERMINAL -e neomutt; pkill -RTMIN+12 blocks
 # super + e
