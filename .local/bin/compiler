@@ -28,6 +28,8 @@ case "$file" in
 	*\.[0-9]) refer -PS -e "$file" | groff -mandoc -T pdf > "$base".pdf ;;
 	*\.[rR]md) Rscript -e "require(rmarkdown); rmarkdown::render('$file', quiet=TRUE)" ;;
 	*\.tex) textype "$file" ;;
+	*\.zig) zig build run || zig run "$file"
+    ;;
 	*slides\.md) pandoc "$file" -t beamer -o "$base".pdf ;;
 	index\.md) pandoc "$file" -o "$base".html ;;
 	*\.md) pandoc "$file" --pdf-engine=xelatex -o "$base".pdf ;;

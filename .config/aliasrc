@@ -27,6 +27,7 @@ alias \
 	g="git" \
 	gis="git status" \
 	gac="git add . ; git commit -a"\
+	gd="git diff"\
 	gr="cd \`git rev-parse --show-toplevel\`"
 
 
@@ -87,4 +88,7 @@ function controlt () {
 }
 function rgl () {
   rg --color=always $@ | less -r
+}
+function upfile () {
+  curl --data-binary \@$1 https://paste.rs
 }

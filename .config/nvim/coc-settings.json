@@ -3,7 +3,6 @@
     "rust",
     "json",
     "c",
-    "cpp",
     "python"
   ],
   "coc.preferences.bracketEnterImprove": true,
