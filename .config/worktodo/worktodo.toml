@@ -1,4 +1,4 @@
-emojis = false
+emojis = true
 backticks = false
 verbose = false
 show_id_in_ls = false

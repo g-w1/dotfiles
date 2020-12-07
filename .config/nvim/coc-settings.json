@@ -3,7 +3,10 @@
     "rust",
     "json",
     "c",
-    "python"
+    "css",
+    "python",
+    "html",
+    "javascript"
   ],
   "coc.preferences.bracketEnterImprove": true,
   "coc.preferences.jumpCommand": "tabe",

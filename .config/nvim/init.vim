@@ -147,6 +147,7 @@ autocmd BufNewFile,BufRead *.tera set syntax=html
 
 " Replace all is aliased to S.
 	nnoremap S :%s//g<Left><Left>
+  vmap S :'<,'>s//g<Left><Left>
 
 " Compile document, be it groff/LaTeX/markdown/etc.
 	map <leader>c :w! \| :!compiler <c-r>%<CR>

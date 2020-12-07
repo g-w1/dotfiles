@@ -3,7 +3,7 @@
 
 # Enable colors and change prompt:
 autoload -U colors && colors	# Load colors
-PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
+# PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 setopt autocd		# Automatically cd into typed directory.
 stty stop undef		# Disable ctrl-s to freeze terminal.
 
@@ -17,6 +17,7 @@ HISTFILE=~/.cache/zsh/history
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zshnameddirrc"
 
+[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
@@ -96,3 +97,5 @@ source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 . /home/jacob/.nix-profile/etc/profile.d/nix.sh
 echo "Todo:"
 work ls
+
+eval $(starship init zsh)
